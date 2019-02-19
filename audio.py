@@ -45,8 +45,10 @@ def search_and_display(search_string):
 
 		image = Image.open(BytesIO(image_data.content))  
 		print(image)
-		image.save("tmp.jpg")
-		os.system("xdg-open tmp.jpg")
+		
+		# Does not work by default on raspberry pi
+		# Need to install imagemagick
+		image.show()
 
 
 		print (image_data)
