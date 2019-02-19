@@ -1,6 +1,6 @@
 from __future__ import division
 
-import time
+import time 
 import re
 import sys
 
@@ -13,8 +13,6 @@ from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
 from msrest.authentication import CognitiveServicesCredentials
 
 import asyncio
-
-# def init():
 
 # initialization
 # Grab the Azure Image Search API Key
