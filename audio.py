@@ -4,7 +4,10 @@ import time
 import re
 import sys
 
-from PIL import Image
+from wand.image import Image
+from wand.display import display
+
+# from PIL import Image
 from io import BytesIO
 
 import requests
@@ -43,12 +46,14 @@ def search_and_display(search_string):
 
 		image_data = requests.get(first_image_result.thumbnail_url)
 
-		image = Image.open(BytesIO(image_data.content))  
+		image = Image(blob=image_data.content)  
 		print(image)
 		
 		# Does not work by default on raspberry pi
 		# Need to install imagemagick
-		image.show()
+#		image.show()
+		display(image)
+
 
 
 		print (image_data)
