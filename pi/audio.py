@@ -49,15 +49,9 @@ def search_and_display(search_string):
 		image = Image(blob=image_data.content)  
 		print(image)
 		
-		# Does not work by default on raspberry pi
-		# Need to install imagemagick
-#		image.show()
+		# Requires wand
 		display(image)
-
-
-
 		print (image_data)
 
 
 search_and_display("Lindt 90 Dark")
-print("asdf")

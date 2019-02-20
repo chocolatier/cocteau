@@ -1,5 +1,5 @@
-#define HIGH_SPEED = 200
-#define LOW_SPEED = 100
+#define HIGH_SPEED 200
+#define LOW_SPEED 100
 
 int M1 = 4;     //Motor 1
 int S1 = 5;     //M1 Speed
@@ -15,7 +15,8 @@ void setup(void)
  
 void loop(void) 
 {
-
+//  setSpeedHigh();
+//  moveForward();
 }
 
 void moveForward() {
