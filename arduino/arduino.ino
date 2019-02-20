@@ -15,7 +15,7 @@
 // See SERIALLICENSE for more details. 
 
 
-#define PANSERVO 0
+#define  PANSERVO 0
 #define  TILTSERVO 1
 #define  STOP 2
 #define  EXPLORE 3
@@ -125,6 +125,8 @@ void loop(void)
 //  tiltServo.write(40);
 //
 //  delay(10000);
+
+  read_serial();
 
 }
 
