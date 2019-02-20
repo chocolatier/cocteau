@@ -50,6 +50,18 @@ void setSpeedHigh() {
  }
 
 
+void turnLeft() {
+   analogWrite (S1,0);
+   analogWrite (S2,HIGH_SPEED); 
+   moveForward();
+  }
+
+void turnRight() {
+   analogWrite (S1,HIGH_SPEED);
+   analogWrite (S2,0); 
+   moveForward();
+  }
+
 void stop() {
    analogWrite (S1,0);
    analogWrite (S2,0); 
