@@ -51,7 +51,5 @@ def search_and_display(search_string):
 		
 		# Requires wand
 		display(image)
-		print (image_data)
-
 
 search_and_display("Lindt 90 Dark")
