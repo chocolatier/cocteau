@@ -30,20 +30,20 @@ void setup(void)
   panServo.attach(8);
   tiltServo.attach(7);
 } 
- 
+
 void loop(void) 
 {
-  
-//  dist = SharpIR.distance();  
-//  on_precipie = digitalRead(2); 
-//
-//  if (dist < 15 & !on_precipie){
-//    stop();
-//    
-//    } else {
-//    setSpeedHigh();
-//    moveForward();      
-//    }
+
+  //  dist = SharpIR.distance();  
+  //  on_precipie = digitalRead(2); 
+  //
+  //  if (dist < 15 & !on_precipie){
+  //    stop();
+  //    
+  //    } else {
+  //    setSpeedHigh();
+  //    moveForward();      
+  //    }
 
   panServo.write(110);
   tiltServo.write(30);
@@ -63,38 +63,39 @@ void moveForward() {
 }
 
 void setSpeedHigh() {
-   analogWrite (S1,HIGH_SPEED);
-   analogWrite (S2,HIGH_SPEED); 
- }
+  analogWrite (S1,HIGH_SPEED);
+  analogWrite (S2,HIGH_SPEED); 
+}
 
 
 void writePan(int angle) {
-    panServo.write(angle);
-  }
+  panServo.write(angle);
+}
 
 void writeTilt(int angle) {
-    tiltServo.write(angle);
-  }
+  tiltServo.write(angle);
+}
 
 
 void turnLeft() {
-   analogWrite (S1,0);
-   analogWrite (S2,HIGH_SPEED); 
-   moveForward();
-  }
+  analogWrite (S1,0);
+  analogWrite (S2,HIGH_SPEED); 
+  moveForward();
+}
 
 void turnRight() {
-   analogWrite (S1,HIGH_SPEED);
-   analogWrite (S2,0); 
-   moveForward();
-  }
+  analogWrite (S1,HIGH_SPEED);
+  analogWrite (S2,0); 
+  moveForward();
+}
 
 void stop() {
-   analogWrite (S1,0);
-   analogWrite (S2,0); 
+  analogWrite (S1,0);
+  analogWrite (S2,0); 
 }
 
 void setSpeedLow() {
-   analogWrite (S1,LOW_SPEED);
-   analogWrite (S2,LOW_SPEED); 
- }
+  analogWrite (S1,LOW_SPEED);
+  analogWrite (S2,LOW_SPEED); 
+}
+
