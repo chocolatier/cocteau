@@ -1,13 +1,19 @@
 #include <SharpIR.h>
+#include <Servo.h> 
 
 #define HIGH_SPEED 1000
 #define LOW_SPEED 200
 #define IR A0 // IR Analog Pin
 #define MODEL 1080 // IR Sensor Model
 
-
 SharpIR SharpIR(IR, MODEL);
 
+Servo panServo;   
+Servo tiltServo;   
+
+// Note: The Documentation calls S1,S2 E1 and E2. 
+// Not sure why that is. I've named them S1, S2
+// for speed control.
 int M1 = 4;     //Motor 1
 int S1 = 5;     //M1 Speed
 
@@ -21,21 +27,30 @@ int on_precipie;
 void setup(void) 
 { 
   Serial.begin(9600);
+  panServo.attach(8);
+  tiltServo.attach(7);
 } 
  
 void loop(void) 
 {
   
-  dist = SharpIR.distance();  
-  on_precipie = digitalRead(2); 
+//  dist = SharpIR.distance();  
+//  on_precipie = digitalRead(2); 
+//
+//  if (dist < 15 & !on_precipie){
+//    stop();
+//    
+//    } else {
+//    setSpeedHigh();
+//    moveForward();      
+//    }
 
-  if (dist < 15 & !on_precipie){
-    stop();
-    
-    } else {
-    setSpeedHigh();
-    moveForward();      
-    }
+  panServo.write(110);
+  tiltServo.write(30);
+  delay(100000);
+  panServo.write(45);
+  tiltServo.write(45);
+  delay(100000);
 
 }
 
@@ -48,6 +63,15 @@ void setSpeedHigh() {
    analogWrite (S1,HIGH_SPEED);
    analogWrite (S2,HIGH_SPEED); 
  }
+
+
+void writePan(int angle) {
+    panServo.write(angle);
+  }
+
+void writeTilt(int angle) {
+    tiltServo.write(angle);
+  }
 
 
 void turnLeft() {
