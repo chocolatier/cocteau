@@ -4,9 +4,7 @@
 
 ## Arduino
 
-* Dependencies
-
-The only external dependency is the SharpIR library, for use with the IR sensor. 
+* SharpIR
 
 https://github.com/guillaume-rico/SharpIR
 
