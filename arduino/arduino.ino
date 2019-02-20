@@ -15,22 +15,21 @@ int M2 = 7;     //Motor 2
 int S2 = 6;     //M2 Speed
 
 int dist; // The Distance sensed by the IR Sensor
+int on_precipie;
+
 
 void setup(void) 
 { 
   Serial.begin(9600);
-
-  dist = SharpIR.distance();  // this returns the distance to the object you're measuring
-
-
 } 
  
 void loop(void) 
 {
   
   dist = SharpIR.distance();  
+  on_precipie = digitalRead(2); 
 
-  if (dist < 15){
+  if (dist < 15 & !on_precipie){
     stop();
     
     } else {
