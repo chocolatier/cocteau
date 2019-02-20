@@ -47,10 +47,13 @@ void loop(void)
 
   panServo.write(110);
   tiltServo.write(30);
-  delay(100000);
-  panServo.write(45);
-  tiltServo.write(45);
-  delay(100000);
+
+  delay(1000);
+
+  panServo.write(90);
+  tiltServo.write(40);
+
+  delay(10000);
 
 }
 
