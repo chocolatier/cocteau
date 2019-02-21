@@ -8,6 +8,9 @@ Before you attach the 2nd plate, wire the additional sensors and servos to the R
 
 ### Mini Pan-and-Tilt Hat 
 
+Attach the Pan Wire to Digital Input 8
+
+Attach the Tilt Wire to Digital Input 7
 
 
 ### Sharp GP2Y0A21YK0F 
