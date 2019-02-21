@@ -10,13 +10,18 @@ Conceptually, anything that reads data from the environment and can transmit it 
 
 It consists of Raspberry Pis with Cameras and Microphones mounted on Arduino controlled rovers. The rovers explore the surroundings until the Raspberry Pi asks it to stop. The Raspberry Pi listens to and looks at the surroundings, transcribing everything it hears and taking photos at regular intervals. 
 
-# Dependencies
+## Software 
 
-## Arduino
+### Raspberry Pi 
 
-* SharpIR
+The PiCam and TFT LCD work out of the box, and require no external drivers. 
 
-https://github.com/guillaume-rico/SharpIR
+### Arduino
+
+I used [Arduino IDE](https://www.arduino.cc/en/Main/Software) to write the Arduino control code. 
+
+The [SharpIR](https://github.com/guillaume-rico/SharpIR) is the only external library my code depends on. To use it, clone the clone the linked repo into `~/sketchbook/libraries/`. 
+To compile/upload/run the Ardunino code, open `/arduino/arduino.ino` in the Arduino IDE, and upload. 
 
 ## Python 
 
