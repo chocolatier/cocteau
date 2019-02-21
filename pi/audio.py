@@ -4,6 +4,8 @@ import time
 import re
 import sys
 
+import threading
+
 from wand.image import Image
 from wand.display import display
 
@@ -44,13 +46,19 @@ def search_and_display(search_string):
 		first_image_result = image_results.value[0]
 		print("First image content url: {}".format(first_image_result.content_url))
 
-		image_data = requests.get(first_image_result.thumbnail_url)
+		try:
+			image_data = requests.get(first_image_result.thumbnail_url)
 
-		image = Image(blob=image_data.content)  
-		print(image)
+			image = Image(blob=image_data.content)  
+			print(image)
 		
-		# Requires wand
-		display(image)
+			t = threading.Thread(target=display, args=[image])
+			t.start()
+		
+			# Requires wand
+			print("asdfgfdgf")
+		except Exception:
+			pass
 
 
 # Copyright 2018 Google LLC
