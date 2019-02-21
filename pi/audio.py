@@ -37,6 +37,11 @@ speech_client = speech.SpeechClient()
 
 
 def search_and_display(search_string):
+
+	# Analyze Sentiment 
+
+
+
 	image_results = image_client.images.search(query=search_string)
 
 	if image_results.value:
@@ -221,7 +226,6 @@ def listen_print_loop(responses, stream):
 
 
 def main():
-    client = speech.SpeechClient()
     config = speech.types.RecognitionConfig(
         encoding=speech.enums.RecognitionConfig.AudioEncoding.LINEAR16,
         sample_rate_hertz=SAMPLE_RATE,
@@ -241,7 +245,7 @@ def main():
                 audio_content=content)
                 for content in audio_generator)
 
-            responses = client.streaming_recognize(streaming_config,
+            responses = speech_client.streaming_recognize(streaming_config,
                                                    requests)
             # Now, put the transcription responses to use.
             listen_print_loop(responses, stream)
