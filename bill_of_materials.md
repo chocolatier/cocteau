@@ -22,7 +22,7 @@ You may replace it with an ordinary Microphone if you don't care about direction
 * 3-Pin Female JST PH-Style Cable (30 cm) with Male Pins for 0.1" Housings 
 * DFRobot 10cm infrared sensor
 * Zip Ties
-* Angle Brackets
+* Angle Brackets - With holes for zip tying, ~75% of the height of the display.
 * Cardboard. Just reuse some of the packaging everything else came in. 
 * Length of Wire
 * Dual Sided Tape
