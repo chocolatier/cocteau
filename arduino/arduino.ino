@@ -8,7 +8,7 @@
 #define MODEL 1080 // IR Sensor Model
 
 #define PANPIN 8
-#define TILTPIN 7
+#define TILTPIN 9
 
 
 // Based on https://github.com/araffin/arduino-robust-serial/blob/master/arduino-board/slave.cpp
