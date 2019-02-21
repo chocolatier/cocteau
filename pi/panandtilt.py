@@ -104,18 +104,15 @@ while True:
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     gray = cv2.equalizeHist( gray )
 
+    loop_counter = 10
+
     # Do face detection
-    faces = faceCascade.detectMultiScale(frame, 1.1, 3, 0, (10, 10))
+    if loop_counter == 10:
+        faces = faceCascade.detectMultiScale(frame, 1.1, 3, 0, (10, 10))
+        loop_counter = 0
+
+    loop_counter = loop_counter + 1
    
-    # Slower method 
-    '''faces = faceCascade.detectMultiScale(
-        gray,
-        scaleFactor=1.1,
-        minNeighbors=4,
-        minSize=(20, 20),
-        flags=cv2.cv.CV_HAAR_SCALE_IMAGE | cv2.cv.CV_HAAR_FIND_BIGGEST_OBJECT | cv2.cv.CV_HAAR_DO_ROUGH_SEARCH
-    )'''
-    
     for (x, y, w, h) in faces:
         # Draw a green rectangle around the face
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
