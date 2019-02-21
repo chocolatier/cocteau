@@ -68,7 +68,7 @@ To compile/upload/run the Ardunino code, open `/arduino/arduino.ino` in the Ardu
 
 Feel free to fork and/or send pull requests :). 
 
-The issues contain some enhancements I would like to add in the project, but will likely not get around to myself, because I'll be busy with my semester 1 subjects. 
+The issues contain some enhancements I would like to add in the project, but will likely not get around to myself any time soon, because I'll be busy with my semester 1 subjects. 
 
 I probably won't be super responsive to any issue you open either. The best (most effective in getting a response) way to get contact would be to email me. 
 

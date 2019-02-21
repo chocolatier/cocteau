@@ -9,7 +9,7 @@ You may replace it with an ordinary Microphone if you don't care about direction
 * Long CSI Cable (300mm+)
 * Official Raspberry Pi Foundation 7" TFT LCD
 * 4x 2.5mm standoffs 
-* Power Bank 
+* Power Bank (5000MAh +)
 * 2x USB B to MicroUSB cables (To power the Pi and the Screen. Any old Phone charging cable will do. Non-charging cables might not be able to deliver enough power, and the Raspberry Pi will show that it is being undervolted)
 * MicroSD Card (At least 4GB)
 
