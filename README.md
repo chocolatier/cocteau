@@ -10,6 +10,10 @@ Conceptually, anything that reads data from the environment and can transmit it 
 
 It consists of Raspberry Pis with Cameras and Microphones mounted on Arduino controlled rovers. The rovers explore the surroundings until the Raspberry Pi asks it to stop. The Raspberry Pi listens to and looks at the surroundings, transcribing everything it hears and taking photos at regular intervals. 
 
+## Hardware 
+
+The project relies on a Raspberry Pi, and Arduino, a Rover and accessories. See the [Bill of Materials](bill_ofmaterials.md) and [Build Instructions](build_instructions.md) for detailed information.
+
 ## Software Setup
 
 ### Raspberry Pi 
