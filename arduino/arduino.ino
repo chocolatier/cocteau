@@ -71,6 +71,10 @@ void read_serial(){
         break;
       }
 
+      case STOP: {
+          
+        }
+
 
     }
 
@@ -92,8 +96,9 @@ int M2 = 7;     //Motor 2
 int S2 = 6;     //M2 Speed
 
 int dist; // The Distance sensed by the IR Sensor
-int on_precipie;
+int on_precipie; // Whether It's on a precipie. 
 
+bool explore = true; // Whether the rover explores or not
 
 void setup(void) 
 { 
@@ -105,27 +110,26 @@ void setup(void)
 void loop(void) 
 {
 
-  //  dist = SharpIR.distance();  
-  //  on_precipie = digitalRead(2); 
-  //
-  //  if (dist < 15 & !on_precipie){
-  //    stop();
-  //    
-  //    } else {
-  //    setSpeedHigh();
-  //    moveForward();      
-  //    }
+  turnRight();
+//
+  if (explore){
+    dist = SharpIR.distance();  
+    on_precipie = digitalRead(2); 
+    Serial.println(on_precipie);
+    Serial.println(dist);
 
-//  panServo.write(110);
-//  tiltServo.write(30);
-//
-//  delay(1000);
-//
-//  panServo.write(90);
-//  tiltServo.write(40);
-//
-//  delay(10000);
+    if (on_precipie){
+        moveBackward();
+      }
+    else if (dist < 10) {
+        turnLeft();
+      } else {
+        moveForward();  
+      }
 
+  } else {
+      stop1();
+    }
   read_serial();
 
 }
@@ -134,6 +138,12 @@ void moveForward() {
   digitalWrite(M1,HIGH);    
   digitalWrite(M2,HIGH); 
 }
+
+void moveBackward() {
+  digitalWrite(M1,LOW);    
+  digitalWrite(M2,LOW); 
+}
+
 
 void setSpeedHigh() {
   analogWrite (S1,HIGH_SPEED);
@@ -151,18 +161,20 @@ void writeTilt(int angle) {
 
 
 void turnLeft() {
-  analogWrite (S1,0);
+  analogWrite (S1,HIGH_SPEED);
   analogWrite (S2,HIGH_SPEED); 
-  moveForward();
-}
+  digitalWrite(M1,LOW);  
+  digitalWrite(M2,HIGH);  }
 
 void turnRight() {
   analogWrite (S1,HIGH_SPEED);
-  analogWrite (S2,0); 
-  moveForward();
-}
+  analogWrite (S2,HIGH_SPEED); 
+  digitalWrite(M1,HIGH);  
+  digitalWrite(M2,LOW);  
+  
+  }
 
-void stop() {
+void stop1() {
   analogWrite (S1,0);
   analogWrite (S2,0); 
 }
@@ -171,4 +183,3 @@ void setSpeedLow() {
   analogWrite (S1,LOW_SPEED);
   analogWrite (S2,LOW_SPEED); 
 }
-

@@ -14,7 +14,7 @@ It consists of Raspberry Pis with Cameras and Microphones mounted on Arduino con
 
 ### Raspberry Pi 
 
-The PiCam and TFT LCD work out of the box, and require no external drivers. 
+The PiCam and TFT LCD work out of the box, and require no external drivers. You can install the drivers for the ReSpeaker hat by following the instructions in the [official documentation](https://github.com/respeaker/seeed-voicecard#seeed-voicecard).
 
 ### Arduino
 
