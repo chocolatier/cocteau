@@ -70,8 +70,8 @@ Feel free to fork and/or send pull requests :).
 
 The issues contain some enhancements I would like to add in the project, but will likely not get around to myself, because I'll be busy with my semester 1 subjects. 
 
-I probably won't be super responsive to any issue you open either. The best way to get my attention would be to email me. 
+I probably won't be super responsive to any issue you open either. The best (most effective in getting a response) way to get contact would be to email me. 
 
 ## Contact 
 
-The best way to reach me is to open an issue on GitHub. You may also email me at \[github username\] \[at\] dedekinddomai \[dot\] nz
+The best (least annoying) way to reach me is to open an issue on GitHub. You may also email me at \[github username\] \[at\] dedekinddomai \[dot\] nz
