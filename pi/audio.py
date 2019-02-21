@@ -6,10 +6,10 @@ import sys
 
 import threading
 
-from wand.image import Image
-from wand.display import display
+# from wand.image import Image
+# from wand.display import display
 
-# from PIL import Image
+from PIL import Image
 from io import BytesIO
 
 import requests
@@ -49,14 +49,9 @@ def search_and_display(search_string):
 		try:
 			image_data = requests.get(first_image_result.thumbnail_url)
 
-			image = Image(blob=image_data.content)  
+			image = Image.open(image_data.content)  
 			print(image)
-		
-			t = threading.Thread(target=display, args=[image])
-			t.start()
-		
-			# Requires wand
-			print("asdfgfdgf")
+			image.show()		
 		except Exception:
 			pass
 
