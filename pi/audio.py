@@ -47,16 +47,26 @@ def search_and_display(search_string):
 
 	# Analyze Sentiment 
 
-	sentiment_doc = types.Document(
+	search_doc = types.Document(
         content=search_string,
         type=enums.Document.Type.PLAIN_TEXT)
 
-	sentiment = nl_client.analyze_sentiment(sentiment_doc).document_sentiment
+	sentiment = nl_client.analyze_sentiment(search_doc).document_sentiment
 
 	print(sentiment.score)
 	print(sentiment.magnitude)
 
-	image_results = image_client.images.search(query=search_string)
+	entities = nl_client.analyze_entities(search_doc).entities
+	entities.sort(key=lambda x: x.salience, reverse=True)
+
+	print(entities)
+
+	try:
+		query_string = entities[0].name 
+	except Exception:
+		query_string = search_string
+
+	image_results = image_client.images.search(query=query_string)
 
 	if image_results.value:
 		first_image_result = image_results.value[0]
