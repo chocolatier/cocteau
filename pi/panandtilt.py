@@ -40,8 +40,13 @@ for p in ports:
 	if "Arduino" in p[1]:
 		f = serial.Serial(p[0])
 
-write_order(f, PANSERVO)
-write_i16(f, 123)
+def writePan(val):
+    write_order(f, PANSERVO)
+    write_i16(f, val)
 
-write_order(f, TILTSERVO)
-write_i16(f, 26)
+def writeTilt(val):
+    write_order(f, TILTSERVO)
+    write_i16(f, val)
+
+writePan(122)
+writeTilt(45)
