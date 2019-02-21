@@ -12,6 +12,11 @@ from io import BytesIO
 import requests
 
 from google.cloud import speech
+from google.cloud import language
+from google.cloud.language import enums
+from google.cloud.language import types
+
+
 
 import pyaudio 
 from six.moves import queue
@@ -34,13 +39,22 @@ image_client = ImageSearchAPI(CognitiveServicesCredentials(BING_KEY))
 # Set up the Google Client 
 # You need to export the path to the key before running the script
 speech_client = speech.SpeechClient()
+nl_client = language.LanguageServiceClient() # Natural Language Client
+
 
 
 def search_and_display(search_string):
 
 	# Analyze Sentiment 
 
+	sentiment_doc = types.Document(
+        content=search_string,
+        type=enums.Document.Type.PLAIN_TEXT)
 
+	sentiment = nl_client.analyze_sentiment(sentiment_doc).document_sentiment
+
+	print(sentiment.score)
+	print(sentiment.magnitude)
 
 	image_results = image_client.images.search(query=search_string)
 
