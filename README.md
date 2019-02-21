@@ -23,3 +23,7 @@ https://github.com/guillaume-rico/SharpIR
 * Wand 
 * Google Voice API
 * Azure API 
+
+## Contact 
+
+The best way to reach me is to open an issue on GitHub. You may also email me at chocolatier _removethis_ \[at\] dedekinddomai \[dot\] nz
