@@ -10,11 +10,52 @@ Conceptually, anything that reads data from the environment and can transmit it 
 
 It consists of Raspberry Pis with Cameras and Microphones mounted on Arduino controlled rovers. The rovers explore the surroundings until the Raspberry Pi asks it to stop. The Raspberry Pi listens to and looks at the surroundings, transcribing everything it hears and taking photos at regular intervals. 
 
-## Software 
+## Software Setup
 
 ### Raspberry Pi 
 
-The PiCam and TFT LCD work out of the box, and require no external drivers. You can install the drivers for the ReSpeaker hat by following the instructions in the [official documentation](https://github.com/respeaker/seeed-voicecard#seeed-voicecard).
+The Raspberry Pis run [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) Stretch. 
+
+The PiCam and TFT LCD work out of the box, and require no external drivers. You need to install the drivers for the ReSpeaker hat by following the instructions in the [official documentation](https://github.com/respeaker/seeed-voicecard#seeed-voicecard).
+
+The toolchain for the Python code is included with Raspbian. All you need is pip and Python 3.5+, which is already included. 
+
+To execute the a particular python script 
+
+``
+ cd ../cocteau/pi 
+ python3 script.py
+``
+
+#### Python Libraries
+
+You will need to install the following libraries:
+
+* Wand `pip install wand`
+
+* Google Cloud Speech to Text `pip install google-cloud-speech`
+
+* azure-cognitiveservices-search-imagesearch `pip install azure-cognitiveservices-search-imagesearch`
+
+To use the Google API, you need to have an account on the Google Cloud Platform and have set up environment variables correctly.
+
+Follow the [guide by Google](https://cloud.google.com/speech-to-text/docs/quickstart-client-libraries). 
+
+To use the Bing Image Search API you will need a Microsoft Azure account, and get your subscription key. 
+
+Microsoft has their documentation [here](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-image-search/image-sdk-python-quickstart).
+
+The subscription key has to be placed in `cocteau/pi/bing_key.txt`
+
+For Face Tracking 
+
+* You will first need to install OpenCV. This is provided in the raspbian repo.
+
+`sudo apt-get install opencv`
+
+Then you need to install the Python Bindings
+
+`pip install opencv-python`
 
 ### Arduino
 
@@ -23,11 +64,13 @@ I used [Arduino IDE](https://www.arduino.cc/en/Main/Software) to write the Ardui
 The [SharpIR](https://github.com/guillaume-rico/SharpIR) is the only external library my code depends on. To use it, clone the clone the linked repo into `~/sketchbook/libraries/`. 
 To compile/upload/run the Ardunino code, open `/arduino/arduino.ino` in the Arduino IDE, and upload. 
 
-## Python 
+## Contributing 
 
-* Wand 
-* Google Voice API
-* Azure API 
+Feel free to fork and/or send pull requests :). 
+
+The issues contain some enhancements I would like to add in the project, but will likely not get around to myself, because I'll be busy with my semester 1 subjects. 
+
+I probably won't be super responsive to any issue you open either. The best way to get my attention would be to email me. 
 
 ## Contact 
 
