@@ -73,7 +73,7 @@ FRAME_H = 720
 # Default Pan/Tilt for the camera in degrees.
 # Camera range is from 0 to 180
 cam_pan = 90
-cam_tilt = 90
+cam_tilt = 60
 
 # Set up the CascadeClassifier for face tracking
 #cascPath = 'haarcascade_frontalface_default.xml' # sys.argv[1]
@@ -112,7 +112,9 @@ while True:
         loop_counter = 0
 
     loop_counter = loop_counter + 1
-   
+  
+    print (type(faces))
+
     for (x, y, w, h) in faces:
         # Draw a green rectangle around the face
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)

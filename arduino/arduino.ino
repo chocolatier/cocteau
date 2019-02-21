@@ -8,7 +8,7 @@
 #define MODEL 1080 // IR Sensor Model
 
 #define PANPIN 8
-#define TILTPIN 7
+#define TILTPIN 9
 
 
 // Based on https://github.com/araffin/arduino-robust-serial/blob/master/arduino-board/slave.cpp
@@ -54,6 +54,9 @@ int read_order(){
   return Serial.read();
 }
 
+
+bool explore = false; // Whether the rover explores or not
+
 void read_serial(){
   if (Serial.available() > 0) {
     int order_received = read_order();
@@ -72,8 +75,13 @@ void read_serial(){
       }
 
       case STOP: {
-          
+          explore = false;
+          break;
         }
+      
+      case EXPLORE: {
+        explore = true;
+      }
 
 
     }
@@ -98,19 +106,18 @@ int S2 = 6;     //M2 Speed
 int dist; // The Distance sensed by the IR Sensor
 int on_precipie; // Whether It's on a precipie. 
 
-bool explore = true; // Whether the rover explores or not
-
 void setup(void) 
 { 
   Serial.begin(9600);
   panServo.attach(PANPIN);
   tiltServo.attach(TILTPIN);
+  writePan(90);
+  delay(1000);
+  writeTilt(60);
 } 
 
 void loop(void) 
 {
-
-  turnRight();
 //
   if (explore){
     dist = SharpIR.distance();  
@@ -123,13 +130,15 @@ void loop(void)
       }
     else if (dist < 10) {
         turnLeft();
+
       } else {
         moveForward();  
       }
 
   } else {
       stop1();
-    }
+  }
+    
   read_serial();
 
 }
