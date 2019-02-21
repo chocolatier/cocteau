@@ -6,9 +6,6 @@ import sys
 
 import threading
 
-# from wand.image import Image
-# from wand.display import display
-
 from PIL import Image
 from io import BytesIO
 
@@ -47,9 +44,10 @@ def search_and_display(search_string):
 		print("First image content url: {}".format(first_image_result.content_url))
 
 		try:
+			print ("trying to get image")
 			image_data = requests.get(first_image_result.thumbnail_url)
 
-			image = Image.open(image_data.content)  
+			image = Image.open(BytesIO(image_data.content))  
 			print(image)
 			image.show()		
 		except Exception:
