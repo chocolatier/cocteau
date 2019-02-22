@@ -63,9 +63,17 @@ def search_and_display(search_string):
 
 	print(entities)
 
+	query_string = None 
+
 	try:
-		query_string = entities[0].name 
+		for entity in entities:
+			if (entity.type != COMMON and entity.type != UNKNOWN and entity.type != OTHER):
+				query_string = entity.name
+
 	except Exception:
+		query_string = search_string
+
+	if query_string == None:
 		query_string = search_string
 
 	image_results = image_client.images.search(query=query_string)
