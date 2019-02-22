@@ -55,7 +55,7 @@ int read_order(){
 }
 
 
-bool explore = false; // Whether the rover explores or not
+bool explore = true; // Whether the rover explores or not
 
 void read_serial(){
   if (Serial.available() > 0) {
@@ -106,9 +106,14 @@ int S2 = 6;     //M2 Speed
 int dist; // The Distance sensed by the IR Sensor
 int on_precipie; // Whether It's on a precipie. 
 
+unsigned long backward_time = 0;
+unsigned long turn_time = 0;
+
+bool turn_dir = false;
+
 void setup(void) 
 { 
-  Serial.begin(9600);
+//  Serial.begin(9600);
   panServo.attach(PANPIN);
   tiltServo.attach(TILTPIN);
   writePan(90);
@@ -119,17 +124,35 @@ void setup(void)
 void loop(void) 
 {
 //
+  
+
   if (explore){
     dist = SharpIR.distance();  
     on_precipie = digitalRead(2); 
     Serial.println(on_precipie);
     Serial.println(dist);
 
-    if (on_precipie){
+    if (millis() - backward_time < 5000){
         moveBackward();
       }
-    else if (dist < 10) {
-        turnLeft();
+    else if (on_precipie){
+        moveBackward();
+        backward_time = millis();
+      }
+    else if (dist < 10){
+        moveBackward();
+        backward_time = millis() - 2500;
+      }
+    else if (dist < 20) {
+        if (millis() - turn_time > 20000) {
+            turn_dir = !turn_dir;
+            turn_time = millis();
+          }
+        if (turn_dir) {
+          turnLeft();
+        } else {
+          turnRight();  
+        }
 
       } else {
         moveForward();  
@@ -139,7 +162,7 @@ void loop(void)
       stop1();
   }
     
-  read_serial();
+//  read_serial();
 
 }
 
@@ -170,16 +193,16 @@ void writeTilt(int angle) {
 
 
 void turnLeft() {
-  analogWrite (S1,HIGH_SPEED);
+  analogWrite (S1,0);
   analogWrite (S2,HIGH_SPEED); 
-  digitalWrite(M1,LOW);  
+  digitalWrite(M1,HIGH);  
   digitalWrite(M2,HIGH);  }
 
 void turnRight() {
   analogWrite (S1,HIGH_SPEED);
-  analogWrite (S2,HIGH_SPEED); 
+  analogWrite (S2,0); 
   digitalWrite(M1,HIGH);  
-  digitalWrite(M2,LOW);  
+  digitalWrite(M2,HIGH);  
   
   }
 
