@@ -24,6 +24,8 @@ from six.moves import queue
 from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
 from msrest.authentication import CognitiveServicesCredentials
 
+from subprocess import call
+
 import asyncio
 
 import os
@@ -75,9 +77,12 @@ def search_and_display(search_string):
 		try:
 			print ("trying to get image")
 			image_data = requests.get(first_image_result.thumbnail_url)
-
+			
 			image = Image.open(BytesIO(image_data.content))  
 			print(image)
+			
+			call('pkill display', shell=True)				
+
 			image.show()		
 		except Exception:
 			pass
