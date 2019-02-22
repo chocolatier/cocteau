@@ -10,17 +10,34 @@ Conceptually, anything that reads data from the environment and can transmit it 
 
 It consists of Raspberry Pis with Cameras and Microphones mounted on Arduino controlled rovers. The rovers explore the surroundings until the Raspberry Pi asks it to stop. The Raspberry Pi listens to and looks at the surroundings, transcribing everything it hears and taking photos at regular intervals. 
 
+## Photos 
+
+![Side](images/side_shot.jpg)
+![Front](images/fron_shot.jpg)
+
 ## Hardware 
 
-The project relies on a Raspberry Pi, and Arduino, a Rover and accessories. See the [Bill of Materials](bill_ofmaterials.md) and [Build Instructions](build_instructions.md) for detailed information.
+The project relies on a Raspberry Pi, and Arduino, a Rover and accessories. See the [Bill of Materials](bill_of_materials.md) and [Build Instructions](build_instructions.md) for detailed information.
 
 ## Software Setup
+
+All the code is built on the Raspberry Pi, so there is no specialised toolchain required. You only need another computer to flash Raspbian onto an SD Card. After which, you can develop entirely on the Raspberry Pi. 
+
+This is NOT recommended. 
+
+My personal workflow involved SSHing in from another machine, and using nvim to edit the files. So any computer with an SSH Client will do.  
 
 ### Raspberry Pi 
 
 The Raspberry Pis run [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) Stretch. 
 
 The PiCam and TFT LCD work out of the box, and require no external drivers. You need to install the drivers for the ReSpeaker hat by following the instructions in the [official documentation](https://github.com/respeaker/seeed-voicecard#seeed-voicecard).
+
+You need to enable the Camera and SSH, if you are using that. 
+
+This can be done by running
+
+`sudo raspi-config`
 
 The toolchain for the Python code is included with Raspbian. All you need is pip and Python 3.5+, which is already included. 
 
@@ -35,9 +52,11 @@ To execute the a particular python script
 
 You will need to install the following libraries:
 
-* Wand `pip install wand`
+* PIL `pip install Pillow`
 
 * Google Cloud Speech to Text `pip install google-cloud-speech`
+
+* Google Cloud Language `pip install google-cloud-language`
 
 * azure-cognitiveservices-search-imagesearch `pip install azure-cognitiveservices-search-imagesearch`
 
@@ -82,8 +101,8 @@ The best (least annoying) way to reach me is to open an issue on GitHub. You may
 
 ## Acknowledgement/References
 
-None of the code in this repository is original. 
+The code in this repository is extremely derivative.  
 
 I have amalgamated the [Pimoroni Face Tracker](https://github.com/pimoroni/PanTiltFacetracker/blob/master/facetracker_lbp.py) example with [Arduino Robust Serial](https://github.com/araffin/arduino-robust-serial/) for the face tracker.
 
-The `audio.py` is `transcribe-streaming-indefinite` from the [Google Cloud Platform Documentation](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/speech/cloud-client), modified to serve images from that transcription. 
+The `audio.py` is an extension of `transcribe-streaming-indefinite` from the [Google Cloud Platform Documentation](https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/speech/cloud-client), modified to analyse the results of that transcription. 
