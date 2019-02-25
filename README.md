@@ -48,6 +48,8 @@ To execute the a particular python script
  python3 script.py
 ``
 
+Note that `panandtilt.py` polls for the presence of an Arduino before it starts, so you also need the Arduino running before you can use it. 
+
 #### Python Libraries
 
 You will need to install the following libraries:
@@ -89,11 +91,35 @@ To compile/upload/run the Ardunino code, open `/arduino/arduino.ino` in the Ardu
 
 ## Contributing 
 
-Feel free to fork and/or send pull requests :). 
+Feel free to fork and/or send pull requests :).
+
+The directory structure is pretty simple. 
+
+The `pi/` folder contains everything that runs on the Raspberry Pi.
+
+The `arduino/` folder contains everything that runs on the Arduino. 
+
+The code is mostly se
 
 The issues contain some enhancements I would like to add in the project, but will likely not get around to myself any time soon, because I'll be busy with my semester 1 subjects. 
 
 I probably won't be super responsive to any issue you open either. The best (most effective in getting a response) way to get contact would be to email me. 
+
+## TODOs
+
+There are quite a few TODOs before this project is complete. 
+
+*    We need to add more and better sensors to the robot, so that it can move around without bumping into obstacles or falling off.
+
+*   Scene analysis. I am not at all comfortable with this, but it is possible to use Google’s Cloud Vision API or Microsoft’s Cognitive services to analyse the camera input.
+
+*    Object tracking - Follow the object MS/Google detect around. With some backup local code in case the connection drops.
+
+*    Communication - The devices should be able to share data independently
+
+* Multiplexing the different parts into a single script
+
+* Decoupling from Google/Bing. There is no reason the code should be hardcoded to use those two services. 
 
 ## Contact 
 

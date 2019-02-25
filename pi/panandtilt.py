@@ -1,4 +1,5 @@
 # Serial Communication based on https://github.com/araffin/python-arduino-serial/blob/master/robust_serial/robust_serial.py
+# Face tracking based on https://github.com/pimoroni/PanTiltFacetracker/blob/master/facetracker_lbp.py
 import serial.tools.list_ports
 import struct
 

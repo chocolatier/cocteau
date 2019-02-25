@@ -169,11 +169,13 @@ void loop(void)
 void moveForward() {
   digitalWrite(M1,HIGH);    
   digitalWrite(M2,HIGH); 
+  setSpeedLow();
 }
 
 void moveBackward() {
   digitalWrite(M1,LOW);    
   digitalWrite(M2,LOW); 
+  setSpeedLow();
 }
 
 
