@@ -107,7 +107,7 @@ I probably won't be super responsive to any issue you open either. The best (mos
 
 ## TODOs
 
-There are quite a few TODOs before this project is complete. 
+There are quite a few [TODOs](https://github.com/chocolatier/cocteau/issues) before this project is complete. 
 
 *    We need to add more and better sensors to the robot, so that it can move around without bumping into obstacles or falling off.
 
@@ -120,6 +120,8 @@ There are quite a few TODOs before this project is complete.
 * Multiplexing the different parts into a single script
 
 * Decoupling from Google/Bing. There is no reason the code should be hardcoded to use those two services. 
+
+* Voice Activity/Direction direction
 
 ## Contact 
 
